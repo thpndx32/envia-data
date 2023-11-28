@@ -81,6 +81,7 @@ const Sphere = ({
     );
   };
 export const Geolocator = () => {
+  const [showCSV, setShowCSV] = useState(true);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const radius = 2;
@@ -125,14 +126,16 @@ export const Geolocator = () => {
       })
     return (
         <Cuerpo>
-          <TheButton>
-            ENVIAR LOCALIZACION
+          <TheButton onClick={()=>{
+            setShowCSV(!showCSV);
+          }}>
+            Ocultar data csv
           </TheButton>
           <Canvas>
                 <ambientLight intensity={0.6} />
                 <Sphere latitude={latitude} longitude={longitude} radius={radius}/>       
               <OrbitControls/>
-              {listaConductores.map((e,index)=>{
+              {showCSV&&listaConductores.map((e,index)=>{
                 const cordenadas = e.coordenadas?e.coordenadas:coordinates(e.Latitude,e.Longitude,radius);
                 console.log("e",e);
                 console.log("coordenadas", cordenadas);
