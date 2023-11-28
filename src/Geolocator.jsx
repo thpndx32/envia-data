@@ -148,7 +148,7 @@ export const Geolocator = () => {
                 console.log("e",e);
                 console.log("coordenadas", cordenadas);
                 return(
-                  <LightSphere key={index} position={cordenadas} intensity={2} color="#572364" delay={index*100}/>
+                  <LightSphere key={index} position={cordenadas} intensity={2} color="#008f39" delay={index*100}/>
                 )
               })}
             </Canvas>
