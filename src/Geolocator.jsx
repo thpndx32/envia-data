@@ -26,7 +26,7 @@ const LightSphere = ({
         <sphereGeometry args={[0.005,32,32]} />
         <a.meshBasicMaterial attach="material" {...emissiveMaterial}/>
       </a.mesh>
-      <pointLight castShadow={true} position={position} intensity={0.2} color={color}/>
+      <pointLight castShadow={true} position={position} intensity={intensity} color={color}/>
     </>
   )
 }
@@ -58,7 +58,7 @@ const Sphere = ({
       <a.mesh ref={sphereRef} rotation={rotation} >
         <sphereGeometry args={[radius, 32, 32]}/>
         <meshStandardMaterial attach="material" map={colorMap}/>
-        <LightSphere position={coordenadas} intensity={20} color="#FF0000"/>
+        <LightSphere position={coordenadas} intensity={2} color="#FF0000"/>
       </a.mesh>
       </>
     );
@@ -75,7 +75,7 @@ export const Geolocator = () => {
       return e.data();
     });
     setListaConductores(array);}
-  },[loadingData])
+  },[loadingData,data])
     navigator.geolocation.getCurrentPosition(function(position) {
         console.log("Position is :", position);
         console.log("Latitude is :", position.coords.latitude);
@@ -96,7 +96,7 @@ export const Geolocator = () => {
                 const cordenadas = e.coordenadas?e.coordenadas:coordinates(e.Latitude,e.Longitude,radius);
                 console.log("coordenadas", cordenadas);
                 return(
-                  <LightSphere position={cordenadas} intensity={20} color="#0000FF"/>
+                  <LightSphere position={cordenadas} intensity={10} color="#0000FF"/>
                 )
               })}
             </Canvas>
